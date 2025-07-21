@@ -9,11 +9,9 @@ function App() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="w-full min-h-screen">
-        <div className="container mx-auto px-4 py-6">
-          <AppHeader />
-        </div>
+      <main className="w-full min-h-screen px-4 py-6">
         <SidebarTrigger />
+        <AppHeader />
       </main>
     </SidebarProvider>
   );

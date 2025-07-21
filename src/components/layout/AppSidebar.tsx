@@ -9,6 +9,8 @@ import {
   Users,
   ChevronDown,
   type LucideIcon,
+  User2,
+  ChevronUp,
 } from "lucide-react";
 
 import {
@@ -31,6 +33,12 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 type MenuItem = {
   title: string;
@@ -63,32 +71,60 @@ const menuItems: MenuItem[] = [
 
 export default function AppSidebar() {
   return (
-    <Sidebar className="border-r">
-      <SidebarHeader className="p-4 px-6">
-        <div className="flex items-center gap-2">
-          <img src="/lamha-logo.svg" alt="Logo" className="w-8 h-8" />
-        </div>
+    <Sidebar className="border-r " collapsible="icon">
+      <SidebarHeader className="pt-4">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild>
+              <a href="/">
+                <img
+                  src="/lamha-logo.svg"
+                  alt="Logo"
+                  className="w-8 h-8"
+                />
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent className="px-2">
+      <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-4">
+            <SidebarMenu className="space-y-4 md:space-y-6">
               {menuItems.map(renderMenuItem)}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="p-4 border-t">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-            AA
-          </div>
-          <span className="text-sm font-medium text-gray-900">
-            Ahmed Abbas
-          </span>
-        </div>
+      <SidebarFooter className="pb-4">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <SidebarMenuButton>
+                  <User2 /> Username
+                  <ChevronUp className="ml-auto" />
+                </SidebarMenuButton>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                side="top"
+                className="w-[--radix-popper-anchor-width]"
+              >
+                <DropdownMenuItem>
+                  <span>Account</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span>Billing</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span>Sign out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
   );
@@ -104,14 +140,10 @@ function renderMenuItem(item: MenuItem) {
       >
         <SidebarMenuItem>
           <CollapsibleTrigger asChild>
-            <SidebarMenuButton className="flex gap-2 items-center justify-between w-full cursor-pointer">
-              <div className="flex gap-2 items-center">
-                <item.icon className="w-5 h-5 md:w-6 md:h-6" />
-                <span className="text-base md:text-lg">
-                  {item.title}
-                </span>
-              </div>
-              <ChevronDown className="transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180 w-5 h-5 md:w-6 md:h-6" />
+            <SidebarMenuButton className=" cursor-pointer">
+              <item.icon className="!w-5 !h-5" />
+              <span className="text-base ">{item.title}</span>
+              <ChevronDown className="transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180 w-5 h-5 ml-auto" />
             </SidebarMenuButton>
           </CollapsibleTrigger>
           <CollapsibleContent>
@@ -120,9 +152,7 @@ function renderMenuItem(item: MenuItem) {
                 <SidebarMenuSubItem key={subItem.title}>
                   <SidebarMenuSubButton asChild>
                     <a href={subItem.url}>
-                      <span className="text-sm md:text-base">
-                        {subItem.title}
-                      </span>
+                      <span className="text-sm">{subItem.title}</span>
                     </a>
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
@@ -137,12 +167,8 @@ function renderMenuItem(item: MenuItem) {
       <SidebarMenuItem key={item.title}>
         <SidebarMenuButton asChild className="flex gap-2">
           <a href={item.url}>
-            <div className="flex gap-2 items-center">
-              <item.icon className="w-5 h-5 md:w-6 md:h-6" />
-              <span className="text-base md:text-lg">
-                {item.title}
-              </span>
-            </div>
+            <item.icon className="!w-5 !h-5" />
+            <span className="text-base">{item.title}</span>
           </a>
         </SidebarMenuButton>
       </SidebarMenuItem>
