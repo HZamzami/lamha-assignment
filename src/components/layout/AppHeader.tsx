@@ -1,12 +1,12 @@
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "../ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 import { ChevronDown, Plus } from "lucide-react";
-import { SidebarTrigger } from "../ui/sidebar";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function AppHeader() {
   return (

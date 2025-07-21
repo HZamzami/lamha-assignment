@@ -7,3 +7,14 @@ export type MenuItem = {
   hasDropdown?: boolean;
   subItems?: { title: string; url: string }[];
 };
+export interface Transaction {
+  id: string;
+  status: "pending" | "approved" | "rejected";
+  date: string;
+  member: string;
+  budget: string;
+  type: string;
+  vendor: string;
+  invoiceNumber: string;
+  amount: number;
+}
