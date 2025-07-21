@@ -11,6 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Badge } from "@/components/ui/badge";
 
 // custom filter for date
 const dateRangeFilter = (
@@ -42,6 +43,29 @@ export const columns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "status",
     header: "Status",
+    cell: ({ getValue }) => {
+      const status = getValue<string>()?.toLowerCase();
+
+      const colorMap: Record<string, string> = {
+        approved:
+          "bg-green-100 text-green-800 border border-green-300",
+        pending:
+          "bg-yellow-100 text-yellow-800 border border-yellow-300",
+        rejected: "bg-red-100 text-red-800 border border-red-300",
+      };
+
+      const style =
+        colorMap[status] ||
+        "bg-gray-100 text-gray-800 border border-gray-300";
+
+      return (
+        <span
+          className={`px-2 py-0.5 rounded-full text-xs font-medium  ${style}`}
+        >
+          {status?.charAt(0).toUpperCase() + status?.slice(1)}
+        </span>
+      );
+    },
   },
   {
     accessorKey: "date",
