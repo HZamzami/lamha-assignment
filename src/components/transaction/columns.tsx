@@ -86,7 +86,7 @@ export const columns: ColumnDef<Transaction>[] = [
           }}
         >
           <img
-            src="/new_sar_symbol.svg"
+            src="new_sar_symbol.svg"
             alt="New Saudi Riyal Symbol"
             style={{ height: "1em", marginRight: "0.2em" }}
           />
