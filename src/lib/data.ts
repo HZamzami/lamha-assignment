@@ -1,4 +1,5 @@
-import type { MenuItem, Transaction } from "@/types/transaction";
+import type { MenuItem } from "@/types/menu";
+import type { Transaction } from "@/types/transaction";
 import {
   Home,
   TrendingUp,

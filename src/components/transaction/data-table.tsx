@@ -94,7 +94,7 @@ export function DataTable<TData, TValue>({
     <div className="">
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 py-4">
         <Input
-          placeholder="Search"
+          placeholder="Search members ..."
           value={
             (table.getColumn("member")?.getFilterValue() as string) ??
             ""
@@ -135,7 +135,7 @@ export function DataTable<TData, TValue>({
               <Button
                 id="date"
                 variant="outline"
-                className={`w-full sm:w-[200px] justify-start text-left font-normal ${
+                className={`w-full sm:w-[240px] justify-start text-left font-normal ${
                   !date && "text-muted-foreground"
                 }`}
               >
