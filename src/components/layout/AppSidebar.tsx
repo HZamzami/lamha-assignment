@@ -27,7 +27,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { menuItems } from "@/lib/data";
-import type { MenuItem } from "@/types/transaction";
+import type { MenuItem } from "@/types/menu";
 
 export default function AppSidebar() {
   return (
