@@ -11,9 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Badge } from "@/components/ui/badge";
-
-// custom filter for date
 const dateRangeFilter = (
   row: any,
   columnId: string,
@@ -39,7 +36,7 @@ const dateRangeFilter = (
   return true;
 };
 
-export const columns: ColumnDef<Transaction>[] = [
+export const Columns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "status",
     header: "Status",
