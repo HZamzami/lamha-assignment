@@ -1,17 +1,4 @@
-import {
-  Home,
-  TrendingUp,
-  PieChart,
-  ArrowLeftRight,
-  FileText,
-  CreditCard,
-  FileBarChart,
-  Users,
-  ChevronDown,
-  type LucideIcon,
-  User2,
-  ChevronUp,
-} from "lucide-react";
+import { ChevronDown, User2, ChevronUp } from "lucide-react";
 
 import {
   Sidebar,
@@ -39,49 +26,25 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-
-type MenuItem = {
-  title: string;
-  url: string;
-  icon: LucideIcon;
-  hasDropdown?: boolean;
-  subItems?: { title: string; url: string }[];
-};
-
-const menuItems: MenuItem[] = [
-  { title: "Home", url: "#", icon: Home },
-  { title: "Cash Flow", url: "#", icon: TrendingUp },
-  { title: "Budget", url: "#", icon: PieChart },
-  { title: "Transaction", url: "#", icon: ArrowLeftRight },
-  { title: "Invoice", url: "#", icon: FileText },
-  { title: "Bill Pay", url: "#", icon: CreditCard },
-  {
-    title: "Tax Report",
-    url: "#",
-    icon: FileBarChart,
-    hasDropdown: true,
-    subItems: [
-      { title: "VAT", url: "#" },
-      { title: "Withholding", url: "#" },
-    ],
-  },
-  { title: "Card", url: "#", icon: CreditCard },
-  { title: "Team", url: "#", icon: Users },
-];
+import { menuItems } from "@/lib/data";
+import type { MenuItem } from "@/types/transaction";
 
 export default function AppSidebar() {
   return (
     <Sidebar className="border-r " collapsible="icon">
-      <SidebarHeader className="pt-4">
+      <SidebarHeader className="py-4 border-b">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <a href="/">
+              <a href="/" className="flex gap-3 items-center">
                 <img
                   src="/lamha-logo.svg"
                   alt="Logo"
                   className="w-8 h-8"
                 />
+                <span className="text-lg font-semibold">
+                  Lamha App
+                </span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -89,16 +52,16 @@ export default function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent>
-        <SidebarGroup>
+        <SidebarGroup className="">
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-4 md:space-y-6">
+            <SidebarMenu className="space-y-1">
               {menuItems.map(renderMenuItem)}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="pb-4">
+      <SidebarFooter className="py-4 border-t">
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
@@ -140,19 +103,19 @@ function renderMenuItem(item: MenuItem) {
       >
         <SidebarMenuItem>
           <CollapsibleTrigger asChild>
-            <SidebarMenuButton className=" cursor-pointer">
-              <item.icon className="!w-5 !h-5" />
-              <span className="text-base ">{item.title}</span>
-              <ChevronDown className="transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180 w-5 h-5 ml-auto" />
+            <SidebarMenuButton className=" cursor-pointer flex gap-3">
+              <item.icon className="" />
+              <span className="">{item.title}</span>
+              <ChevronDown className="transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180 w-4 h-4 ml-auto" />
             </SidebarMenuButton>
           </CollapsibleTrigger>
           <CollapsibleContent>
             <SidebarMenuSub>
               {item.subItems.map((subItem) => (
                 <SidebarMenuSubItem key={subItem.title}>
-                  <SidebarMenuSubButton asChild>
+                  <SidebarMenuSubButton asChild className="pl-3">
                     <a href={subItem.url}>
-                      <span className="text-sm">{subItem.title}</span>
+                      <span className="">{subItem.title}</span>
                     </a>
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
@@ -165,10 +128,10 @@ function renderMenuItem(item: MenuItem) {
   } else {
     return (
       <SidebarMenuItem key={item.title}>
-        <SidebarMenuButton asChild className="flex gap-2">
+        <SidebarMenuButton asChild className="flex gap-3">
           <a href={item.url}>
-            <item.icon className="!w-5 !h-5" />
-            <span className="text-base">{item.title}</span>
+            <item.icon className="" />
+            <span className="">{item.title}</span>
           </a>
         </SidebarMenuButton>
       </SidebarMenuItem>
