@@ -1,8 +1,8 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/layout/AppSidebar";
 import AppHeader from "@/components/layout/AppHeader";
-import { DataTable } from "@/components/transaction/data-table";
-import { columns } from "@/components/transaction/columns";
+import { DataTable } from "@/components/transaction/DataTable";
+import { Columns } from "@/components/transaction/Columns";
 import { mockTransactions } from "@/lib/data";
 import {
   Tabs,
@@ -25,7 +25,7 @@ function App() {
               <TabsTrigger value="draft">Draft</TabsTrigger>
             </TabsList>
             <TabsContent value="transaction">
-              <DataTable columns={columns} data={mockTransactions} />
+              <DataTable columns={Columns} data={mockTransactions} />
             </TabsContent>
             <TabsContent
               value="draft"
