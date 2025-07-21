@@ -13,7 +13,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "../ui/sidebar";
+} from "@/components/ui/sidebar";
 
 import {
   Collapsible,
@@ -38,7 +38,7 @@ export default function AppSidebar() {
             <SidebarMenuButton asChild>
               <a href="/" className="flex gap-3 items-center">
                 <img
-                  src="/lamha-logo.svg"
+                  src="lamha-logo.svg"
                   alt="Logo"
                   className="w-8 h-8"
                 />
